@@ -1,13 +1,16 @@
 name 'chef-server'
-version '4.0.0'
+version '5.5.1'
 maintainer 'Chef Software, Inc.'
 maintainer_email 'cookbooks@chef.io'
-license 'Apache 2.0'
+license 'Apache-2.0'
 description 'Installs and configures Chef Server 12'
-source_url 'https://github.com/chef-cookbooks/chef-server'
-issues_url 'https://github.com/chef-cookbooks/chef-server/issues'
+long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
+depends 'chef-ingredient', '>= 2.1.10'
 
-depends 'chef-ingredient', '>= 0.8.0'
-
+supports 'redhat'
 supports 'centos'
 supports 'ubuntu'
+
+source_url 'https://github.com/chef-cookbooks/chef-server'
+issues_url 'https://github.com/chef-cookbooks/chef-server/issues'
+chef_version '>= 12.7'

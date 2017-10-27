@@ -1,5 +1,8 @@
 #
-# Copyright:: Copyright (c) 2012-2015 Chef Software, Inc.
+# Cookbook:: chef-server
+# Recipe:: default
+#
+# Copyright:: 2015-2016, Chef Software, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,7 +19,6 @@
 
 cache_path = Chef::Config[:file_cache_path]
 
-# see helpers.rb
 ruby_block 'ensure node can resolve API FQDN' do
   extend ChefServerCookbook::Helpers
   block { repair_api_fqdn }
@@ -26,7 +28,7 @@ end
 
 chef_ingredient 'chef-server' do
   extend ChefServerCookbook::Helpers
-  version node['chef-server']['version']
+  version node['chef-server']['version'] unless node['chef-server']['version'].nil?
   package_source node['chef-server']['package_source']
   config <<-EOS
 topology "#{node['chef-server']['topology']}"
